@@ -1,10 +1,12 @@
 
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import "./LoginPage.css";
 
 export default function LoginPage() {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +24,8 @@ export default function LoginPage() {
         email: email.trim(),
         password,
       });
+      // The root route selects this account's role home instead of reusing the previous URL.
+      navigate("/", { replace: true });
     } catch (err) {
       setError(
         err instanceof Error
