@@ -1,6 +1,8 @@
 Customer release readiness
 ===========================
 
+Docker build recipes and a loopback-only Compose evaluation stack are available in [DOCKER.md](DOCKER.md), including a separate migration job, persistent SQL storage and optional AI services. Compose configuration, migration-runner compilation and the targeted backend tests were validated; Linux image builds and runtime startup still require a running Docker engine. The supplied Developer-edition SQL stack is for local evaluation, not a licensed customer deployment.
+
 For staff onboarding and daily application workflows, see the [step-by-step user guide](USER_GUIDE.md).
 
 AI modules now include optional Qdrant/Ollama semantic RAG, Langflow or Ollama help generation, invoice extraction with staff review, bounded branch-inventory queries, aggregate sales explanations, deterministic reorder planning and feedback sentiment analysis. Development uses the installed local llama3.2:3b model. Vector and vision services still require configuration and live validation; no autonomous operational actions are enabled. See [AI features and deployment limits](backend/Documents/AI_FEATURES.md).

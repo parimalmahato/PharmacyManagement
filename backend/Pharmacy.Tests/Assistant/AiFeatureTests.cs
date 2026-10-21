@@ -105,6 +105,15 @@ public sealed class AiFeatureTests
     public void RejectsUnsafeProviderConfiguration(string origin) => Assert.Throws<AiUnavailableException>(() => AiHttp.Endpoint(origin, "api/generate"));
 
     [Fact]
+    public void PrivateContainerHttpRequiresExplicitOptOut()
+    {
+        Assert.Throws<AiUnavailableException>(() => AiHttp.Endpoint("http://ollama:11434/", "api/generate"));
+        Assert.Equal("http://ollama:11434/api/generate", AiHttp.Endpoint("http://ollama:11434/", "api/generate", true).AbsoluteUri);
+        Assert.Throws<AiUnavailableException>(() => AiHttp.Endpoint("file:///tmp/model", "api/generate", true));
+        Assert.Throws<AiUnavailableException>(() => AiHttp.Endpoint("http://user:secret@ollama:11434/", "api/generate", true));
+    }
+
+    [Fact]
     public async Task VectorRetrievalResolvesOnlyPackagedTrustedSources()
     {
         var handler = new VectorHandler();

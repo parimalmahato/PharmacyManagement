@@ -1,0 +1,95 @@
+name: pharmacy-management
+
+# Local evaluation stack. Only the web UI is published, on host loopback.
+# Keep real customer deployment credentials/database and TLS configuration separate.
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: ${PHARMACY_SQL_PASSWORD:?Run scripts/init-docker.ps1 or configure .env}
+    volumes:
+      - pharmacy_sql:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q 'SELECT 1' -b -o /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped
+
+  migrate:
+    build:
+      context: .
+      dockerfile: backend/Pharmacy.Api/Dockerfile
+      target: migrator
+    environment:
+      ConnectionStrings__PharmacyDb: "Server=db,1433;Database=PharmacyDb;User ID=sa;Password=${PHARMACY_SQL_PASSWORD:?Set PHARMACY_SQL_PASSWORD};Encrypt=True;TrustServerCertificate=True;"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Pharmacy.Api/Dockerfile
+      target: final
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__PharmacyDb: "Server=db,1433;Database=PharmacyDb;User ID=sa;Password=${PHARMACY_SQL_PASSWORD:?Set PHARMACY_SQL_PASSWORD};Encrypt=True;TrustServerCertificate=True;"
+      Jwt__Issuer: Pharmacy.Api
+      Jwt__Audience: Pharmacy.React
+      Jwt__Key: ${PHARMACY_JWT_KEY:?Set a random signing key of at least 32 bytes}
+      # Explicit opt-out for this loopback-only HTTP stack. Use TLS for customer deployment.
+      Hosting__AllowHttp: "true"
+      BootstrapIdentity__Enabled: ${PHARMACY_BOOTSTRAP_IDENTITY:-false}
+      SeedAdmin__Email: ${PHARMACY_ADMIN_EMAIL:-}
+      SeedAdmin__Password: ${PHARMACY_ADMIN_PASSWORD:-}
+      SeedAdmin__FullName: ${PHARMACY_ADMIN_NAME:-Pharmacy Administrator}
+      Ai__Enabled: ${PHARMACY_AI_ENABLED:-false}
+      Ai__Model: ${PHARMACY_AI_MODEL:-llama3.2:3b}
+      Ai__VisionModel: ${PHARMACY_VISION_MODEL:-}
+      Ai__EmbeddingModel: ${PHARMACY_EMBEDDING_MODEL:-}
+      Ai__OllamaUrl: ${PHARMACY_OLLAMA_URL:-http://ollama:11434/}
+      Ai__QdrantUrl: http://qdrant:6333/
+      Ai__EnableVectorSearch: ${PHARMACY_VECTOR_ENABLED:-false}
+      Ai__AllowInsecureHttp: "true"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "127.0.0.1:${PHARMACY_WEB_PORT:-8080}:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ai"]
+    volumes:
+      - pharmacy_models:/root/.ollama
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:v1.15.5
+    profiles: ["ai"]
+    volumes:
+      - pharmacy_vectors:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  pharmacy_sql:
+  pharmacy_models:
+  pharmacy_vectors:

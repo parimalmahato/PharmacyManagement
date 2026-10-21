@@ -25,7 +25,7 @@ public sealed class SemanticKnowledge(HttpClient client, GuideKnowledge guide, I
     private async Task<JsonDocument> SendAsync(HttpMethod method, string path, object? data, CancellationToken ct)
     {
         if (!settings.Value.EnableVectorSearch) throw new AiUnavailableException("Vector search is disabled.");
-        using var request = new HttpRequestMessage(method, AiHttp.Endpoint(settings.Value.QdrantUrl, path));
+        using var request = new HttpRequestMessage(method, AiHttp.Endpoint(settings.Value.QdrantUrl, path, settings.Value.AllowInsecureHttp));
         if (!string.IsNullOrWhiteSpace(settings.Value.QdrantApiKey)) request.Headers.Add("api-key", settings.Value.QdrantApiKey);
         if (data is not null) request.Content = JsonContent.Create(data);
         return await AiHttp.SendAsync(client, request, ct);

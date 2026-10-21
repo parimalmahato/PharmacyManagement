@@ -15,6 +15,11 @@ public sealed class AiOptions
     /// </summary>
     public bool Enabled { get; set; }
     /// <summary>
+    /// Explicitly permits server-configured HTTP provider URLs on a private container network.
+    /// Leave disabled for remote deployments unless transport security is provided separately.
+    /// </summary>
+    public bool AllowInsecureHttp { get; set; }
+    /// <summary>
     /// Trusted server-configured Ollama origin; remote services require HTTPS and local development may use loopback HTTP.
     /// </summary>
     public string OllamaUrl { get; set; } = "http://localhost:11434/";
@@ -50,14 +55,18 @@ public sealed class AiOptions
 public static class AiHttp
 {
     /// <summary>
-    /// Accepts an absolute HTTPS service URL or loopback HTTP URL and rejects URL credentials, queries and fragments before appending a fixed provider path.
+    /// Accepts an HTTPS service URL or explicitly permitted HTTP URL and rejects URL credentials, queries and fragments before appending a fixed provider path.
     /// </summary>
-    public static Uri Endpoint(string origin, string path)
+    /// <param name="origin">Server-configured provider origin, never taken from a model response.</param>
+    /// <param name="path">Fixed provider API path.</param>
+    /// <param name="allowInsecureHttp">Explicit transport opt-out for a trusted private container network; defaults to false.</param>
+    /// <returns>The validated provider endpoint.</returns>
+    public static Uri Endpoint(string origin, string path, bool allowInsecureHttp = false)
     {
         if (!Uri.TryCreate(origin, UriKind.Absolute, out var uri) ||
-            (uri.Scheme != "https" && !(uri.Scheme == "http" && uri.IsLoopback)) ||
+            (uri.Scheme != "https" && !(uri.Scheme == "http" && (uri.IsLoopback || allowInsecureHttp))) ||
             !string.IsNullOrEmpty(uri.UserInfo) || !string.IsNullOrEmpty(uri.Query) || !string.IsNullOrEmpty(uri.Fragment))
-            throw new AiUnavailableException("AI service URL must use HTTPS, or HTTP on loopback for local development.");
+            throw new AiUnavailableException("AI service URL must use HTTPS, loopback HTTP, or an explicitly configured private-network HTTP opt-out.");
         return new Uri(uri.AbsoluteUri.TrimEnd('/') + "/" + path.TrimStart('/'));
     }
 
@@ -121,7 +130,7 @@ public sealed class OllamaAiModel(HttpClient client, IOptions<AiOptions> setting
         };
         if (json) payload["format"] = "json";
         if (image is not null) payload["images"] = new[] { image };
-        using var request = new HttpRequestMessage(HttpMethod.Post, AiHttp.Endpoint(options.OllamaUrl, "api/generate")) { Content = JsonContent.Create(payload) };
+        using var request = new HttpRequestMessage(HttpMethod.Post, AiHttp.Endpoint(options.OllamaUrl, "api/generate", options.AllowInsecureHttp)) { Content = JsonContent.Create(payload) };
         using var result = await AiHttp.SendAsync(client, request, ct);
         if (result.RootElement.ValueKind != JsonValueKind.Object || !result.RootElement.TryGetProperty("response", out var response) || response.ValueKind != JsonValueKind.String ||
             response.GetString() is not { Length: > 0 and <= 50000 } text)
@@ -139,7 +148,7 @@ public sealed class OllamaAiModel(HttpClient client, IOptions<AiOptions> setting
     {
         var options = settings.Value;
         if (!options.Enabled || string.IsNullOrWhiteSpace(options.EmbeddingModel)) throw new AiUnavailableException("Configure the Ollama embedding model first.");
-        using var request = new HttpRequestMessage(HttpMethod.Post, AiHttp.Endpoint(options.OllamaUrl, "api/embed"))
+        using var request = new HttpRequestMessage(HttpMethod.Post, AiHttp.Endpoint(options.OllamaUrl, "api/embed", options.AllowInsecureHttp))
         { Content = JsonContent.Create(new { model = options.EmbeddingModel, input = texts, truncate = false }) };
         using var result = await AiHttp.SendAsync(client, request, ct);
         float[][]? vectors;

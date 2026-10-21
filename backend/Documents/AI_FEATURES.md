@@ -60,6 +60,8 @@ The supplied compose file binds Qdrant to loopback and uses a named persistent v
 
 Restart the API after changing settings. AI Workspace's configuration flags indicate configured values, not successful connectivity checks. Requests report missing services/models. Keep service endpoints private and review retention and access controls before deploying to customers.
 
+The local container stack explicitly sets `Ai__AllowInsecureHttp=true` to reach private Docker service names. This defaults to false outside that stack. Keep it false for remote services using HTTPS. See [Docker setup](../../ApplicationHelp/DOCKER.md) for container networking and startup.
+
 ### Build the RAG index
 
 1. Enable the model/embedding/vector settings and start the services.

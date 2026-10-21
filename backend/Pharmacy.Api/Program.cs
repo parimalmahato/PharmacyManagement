@@ -296,7 +296,13 @@ app.Use(async (context, next) =>
     context.Response.Headers.CacheControl = "no-store";
     await next();
 });
-if (!app.Environment.IsDevelopment()) { app.UseHsts(); app.UseHttpsRedirection(); }
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+    // The loopback-only Docker evaluation stack explicitly permits HTTP behind its private proxy.
+    // Keep the default HTTPS redirection for ordinary customer deployments.
+    if (!builder.Configuration.GetValue<bool>("Hosting:AllowHttp")) app.UseHttpsRedirection();
+}
 
 if (app.Environment.IsDevelopment())
 {
