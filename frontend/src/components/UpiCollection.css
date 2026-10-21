@@ -1,0 +1,23 @@
+.upi-collection { margin: 20px 0; padding: 20px; border: 1px solid #cce5e3; border-radius: 12px; background: #f4fbfa; color: #294c59; font-size: 13px; line-height: 1.6; }
+.upi-collection-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.upi-kicker { color: #5a807f; font-size: 10px; font-weight: 650; text-transform: uppercase; letter-spacing: .09em; }
+.upi-collection .upi-collection-heading h3 { margin: 3px 0 0; color: #164f56; font-size: 18px; }
+.upi-manual-badge { padding: 4px 10px; border-radius: 20px; background: #e2f0ee; color: #326e68; font-size: 11px; font-weight: 600; }
+.upi-request-controls { display: flex; align-items: end; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+.upi-request-controls label { display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600; }
+.upi-collection .upi-request-controls input { box-sizing: border-box; width: 180px; height: 42px; padding: 9px 12px; border: 1px solid #c5dcdd; border-radius: 7px; background: #fff; color: #234b55; font: inherit; }
+.upi-collection .upi-request-controls button { min-height: 42px; padding: 9px 16px; border: 0; border-radius: 7px; background: #087f8c; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.upi-collection button:disabled { opacity: .6; cursor: not-allowed; }
+.upi-request-result { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; padding-top: 18px; border-top: 1px solid #d8eae7; }
+.upi-qr { padding: 10px; border: 1px solid #e0e9e6; border-radius: 10px; background: #fff; }
+.upi-qr svg { display: block; width: 100%; height: auto; }
+.upi-request-details { overflow-wrap: anywhere; }
+.upi-request-details > strong { color: #164f56; font-size: 26px; }
+.upi-request-details p { margin: 8px 0; }
+.upi-payee { font-weight: 650; }
+.upi-request-details a { color: #087683; font-weight: 600; }
+.upi-receipt-note { color: #637e88; font-size: 11px; }
+.upi-collection .upi-error { color: #a22e3d; }
+.payment-form .upi-verified-checkbox { display: flex; flex-direction: row; align-items: flex-start; gap: 9px; font-size: 12px; line-height: 1.7; margin: 14px 0; }
+.payment-form .upi-verified-checkbox input[type=checkbox] { box-sizing: border-box; flex: 0 0 16px; width: 16px; min-width: 16px; height: 16px; min-height: 16px; padding: 0; margin: 3px 0 0; }
+@media (max-width: 650px) { .upi-request-result { grid-template-columns: minmax(0, 1fr); } .upi-qr { max-width: 240px; } }

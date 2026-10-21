@@ -1,0 +1,23 @@
+.payment-panel { margin: 24px 0; padding: 20px; border: 1px solid #dbe3ee; border-radius: 10px; background: #fff; color: #1f2937; }
+.payment-heading, .payment-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.payment-panel h2 { margin: 0; font-size: 20px; }
+.payment-panel h3 { margin: 20px 0 12px; font-size: 16px; }
+.payment-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px; background: #f3f6fb; border-radius: 8px; }
+.payment-summary dt { color: #536176; font-size: 13px; }
+.payment-summary dd { margin: 6px 0 0; font-size: 18px; font-weight: 600; }
+.payment-panel button { padding: 10px 14px; border: 0; border-radius: 6px; background: #2563eb; color: white; cursor: pointer; }
+.payment-panel button:disabled { opacity: .55; cursor: wait; }
+.payment-panel input, .payment-panel select { box-sizing: border-box; width: 100%; min-width: 0; min-height: 40px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 5px; background: white; color: #111827; font: inherit; }
+.payment-form fieldset { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin: 14px 0; padding: 14px; border: 1px solid #dbe3ee; border-radius: 6px; }
+.payment-form label { display: grid; gap: 6px; flex: 1 1 150px; font-size: 14px; }
+.payment-form p { line-height: 1.6; }
+.payment-panel input[type=checkbox] { width: 18px; min-height: 18px; }
+.return-history-entry { padding: 10px 0; border-bottom: 1px solid #e5e7eb; break-inside: avoid; }
+.payment-actions { justify-content: flex-start; }
+.payment-error { color: #b91c1c; background: #fef2f2; padding: 12px; border-radius: 6px; }
+.payment-success { color: #047857; background: #ecfdf5; padding: 12px; border-radius: 6px; }
+.payment-history { overflow-x: auto; }
+.payment-panel table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.payment-panel th, .payment-panel td { padding: 10px; text-align: left; border-bottom: 1px solid #e5e7eb; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .payment-panel { padding: 12px; } .payment-summary { grid-template-columns: repeat(2, 1fr); } }
+@media print { .no-print { display: none !important; } .payment-panel { border: 0; padding: 0; } .payment-summary { background: white; } .payment-history { overflow: visible; } .payment-panel tr { break-inside: avoid; } }

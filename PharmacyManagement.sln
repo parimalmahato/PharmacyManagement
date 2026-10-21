@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{F9D548CE-1EF0-471C-B3E0-C876CE55EE02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy.Api", "backend\Pharmacy.Api\Pharmacy.Api.csproj", "{8154E705-4478-435D-A336-AEC67EFCC79C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy.Domain", "backend\Pharmacy.Domain\Pharmacy.Domain.csproj", "{464319E0-CFC2-418E-8FDB-0040CD27C150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy.Application", "backend\Pharmacy.Application\Pharmacy.Application.csproj", "{14ED11EE-8AFE-4D6B-9D01-6F824A77D354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy.Infrastructure", "backend\Pharmacy.Infrastructure\Pharmacy.Infrastructure.csproj", "{ACE7602C-90FB-4A5B-83CD-CAE8D422883C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy.Tests", "backend\Pharmacy.Tests\Pharmacy.Tests.csproj", "{B23910B6-0B1A-4840-95CC-10BA6ED705FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Document", ".tmp-xml-docs\Document.csproj", "{73769825-3B72-4C5B-B796-51D4C763D4AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8154E705-4478-435D-A336-AEC67EFCC79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8154E705-4478-435D-A336-AEC67EFCC79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8154E705-4478-435D-A336-AEC67EFCC79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8154E705-4478-435D-A336-AEC67EFCC79C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464319E0-CFC2-418E-8FDB-0040CD27C150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464319E0-CFC2-418E-8FDB-0040CD27C150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464319E0-CFC2-418E-8FDB-0040CD27C150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464319E0-CFC2-418E-8FDB-0040CD27C150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14ED11EE-8AFE-4D6B-9D01-6F824A77D354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14ED11EE-8AFE-4D6B-9D01-6F824A77D354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14ED11EE-8AFE-4D6B-9D01-6F824A77D354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14ED11EE-8AFE-4D6B-9D01-6F824A77D354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE7602C-90FB-4A5B-83CD-CAE8D422883C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE7602C-90FB-4A5B-83CD-CAE8D422883C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE7602C-90FB-4A5B-83CD-CAE8D422883C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE7602C-90FB-4A5B-83CD-CAE8D422883C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23910B6-0B1A-4840-95CC-10BA6ED705FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23910B6-0B1A-4840-95CC-10BA6ED705FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23910B6-0B1A-4840-95CC-10BA6ED705FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23910B6-0B1A-4840-95CC-10BA6ED705FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73769825-3B72-4C5B-B796-51D4C763D4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73769825-3B72-4C5B-B796-51D4C763D4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73769825-3B72-4C5B-B796-51D4C763D4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73769825-3B72-4C5B-B796-51D4C763D4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8154E705-4478-435D-A336-AEC67EFCC79C} = {F9D548CE-1EF0-471C-B3E0-C876CE55EE02}
+		{464319E0-CFC2-418E-8FDB-0040CD27C150} = {F9D548CE-1EF0-471C-B3E0-C876CE55EE02}
+		{14ED11EE-8AFE-4D6B-9D01-6F824A77D354} = {F9D548CE-1EF0-471C-B3E0-C876CE55EE02}
+		{ACE7602C-90FB-4A5B-83CD-CAE8D422883C} = {F9D548CE-1EF0-471C-B3E0-C876CE55EE02}
+		{B23910B6-0B1A-4840-95CC-10BA6ED705FB} = {F9D548CE-1EF0-471C-B3E0-C876CE55EE02}
+	EndGlobalSection
+EndGlobal

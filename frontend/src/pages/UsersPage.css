@@ -1,0 +1,100 @@
+
+.users-page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.users-page h1 {
+  margin-bottom: 24px;
+}
+
+.users-panel {
+  background: white;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.users-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.users-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.users-form input,
+.users-form select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.users-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.users-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.users-table-wrapper {
+  overflow-x: auto;
+}
+
+.users-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table-wrapper th,
+.users-table-wrapper td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.users-error {
+  padding: 12px;
+  background: #fef2f2;
+  color: #b91c1c;
+  border-radius: 8px;
+}
+
+.users-success {
+  padding: 12px;
+  background: #f0fdf4;
+  color: #166534;
+  border-radius: 8px;
+}
+
+.users-help { color: #697f8f; font-size: 13px; line-height: 1.7; }
+.users-reset-panel { margin: 20px 0; padding: 20px; background: #f4fafb; border: 1px solid #cce4e6; border-radius: 10px; }
+.users-reset-panel h3 { margin: 0; color: #244655; font-size: 16px; }
+.users-full-row { grid-column: 1 / -1; margin: 0; }
+.users-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.users-actions button { padding: 8px 12px; border: 1px solid #cee0e6; border-radius: 6px; background: #edf7f8; color: #087783; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.users-actions button:hover { background: #dff0f2; }
+.users-actions button:disabled { opacity: .55; cursor: not-allowed; }
+.users-form .users-actions button { background: #087f8c; color: #fff; }
+.users-form .users-actions .users-cancel { background: #fff; color: #486575; border: 1px solid #cddde4; }
+
+@media (max-width: 768px) {
+  .users-form {
+    grid-template-columns: 1fr;
+  }
+}

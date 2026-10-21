@@ -1,0 +1,12 @@
+.ai-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0; }
+.ai-tabs button { border: 1px solid #c7dce1; border-radius: 8px; padding: 10px 14px; background: white; color: #225366; }
+.ai-tabs button[aria-current] { background: #087f8c; color: white; border-color: #087f8c; }
+.ai-workspace input { box-sizing: border-box; display: block; width: 100%; max-width: 460px; padding: 11px; border: 1px solid #bdcdd7; border-radius: 8px; font: inherit; margin: 8px 0 16px; }
+.ai-workspace label { margin: 16px 0; }
+.ai-primary { padding: 12px 20px; background: #087f8c; border: 0; border-radius: 8px; color: white; margin-top: 16px; }
+.ai-table { overflow-x: auto; }
+.ai-table table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.ai-table :is(th,td) { text-align: left; padding: 12px; border-bottom: 1px solid #e2ebef; white-space: nowrap; }
+.ai-metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 14px; }
+.ai-metrics div { border: 1px solid #dce7ed; padding: 16px; border-radius: 10px; }
+.ai-metrics dt { font-size: .85rem; color: #526778; }.ai-metrics dd { margin: 8px 0 0; font-size: 1.3rem; font-weight: 700; }

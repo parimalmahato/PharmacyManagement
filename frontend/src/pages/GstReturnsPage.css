@@ -1,0 +1,43 @@
+.gst-page { max-width: 1450px; margin: 0 auto; padding: 28px 32px; color: #18384b; }
+.gst-page-heading > span { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: #087f8c; font-weight: 650; }
+.gst-page-heading h1 { margin: 7px 0; }
+.gst-page-heading p, .gst-help { color: #687f8e; font-size: 13px; line-height: 1.7; }
+.gst-scope-note { margin: 22px 0; padding: 18px 22px; border: 1px solid #e7d7ac; border-left: 4px solid #bd8e31; border-radius: 8px; background: #fffbf0; font-size: 13px; line-height: 1.7; }
+.gst-scope-note p { margin: 5px 0 0; color: #786342; }
+.gst-panel { margin: 20px 0; padding: 24px; border: 1px solid #dfe8ed; border-radius: 12px; background: #fff; }
+.gst-panel h2 { margin: 0 0 14px; font-size: 18px; }
+.gst-toolbar, .gst-actions, .gst-section-heading { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; }
+.gst-section-heading { justify-content: space-between; align-items: start; }
+.gst-section-heading p { font-size: 13px; color: #718594; }
+.gst-page label { display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600; }
+.gst-page input, .gst-page select { box-sizing: border-box; width: 100%; min-width: 0; height: 42px; padding: 9px 12px; border: 1px solid #cfdee6; border-radius: 6px; background: #fff; font: inherit; color: #264b5d; }
+.gst-page input[readonly] { background: #f3f7f9; color: #647e8d; }
+.gst-page button { padding: 10px 15px; min-height: 38px; border: 1px solid #cce1e4; border-radius: 6px; background: #087f8c; color: #fff; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.gst-page button:hover { background: #066873; }
+.gst-page button:disabled { opacity: .5; cursor: not-allowed; }
+.gst-status { padding: 5px 12px; border-radius: 20px; background: #fff1da; color: #8c611e; font-size: 12px; font-weight: 650; }
+.gst-reviewed { background: #e3f5ec; color: #267657; }
+.gst-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
+.gst-metrics > div { padding: 15px; background: #f4f8fa; border: 1px solid #e5edf1; border-radius: 8px; }
+.gst-metrics span { display: block; color: #67808e; font-size: 11px; margin-bottom: 8px; }
+.gst-metrics strong { font-size: 20px; font-variant-numeric: tabular-nums; }
+.gst-error, .gst-success { padding: 12px 16px; border-radius: 8px; background: #fff0ef; color: #a12d3b; font-size: 13px; line-height: 1.7; }
+.gst-success { background: #e8f7ee; color: #27704f; }
+.gst-issues { padding-left: 20px; font-size: 12px; line-height: 1.7; color: #7e7149; max-height: 300px; overflow-y: auto; }
+.gst-issues li { padding: 5px 0; }
+.gst-issues .gst-issue-error { color: #a13e46; }
+.gst-table-scroll { overflow-x: auto; margin: 16px 0; }
+.gst-page table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.gst-page th, .gst-page td { padding: 12px; text-align: left; border-bottom: 1px solid #e4ebf0; vertical-align: middle; }
+.gst-page th { background: #f5f8fa; white-space: nowrap; color: #607988; }
+.gst-page td { max-width: 280px; overflow-wrap: anywhere; }
+.gst-page td small { display: block; margin-top: 5px; color: #7b8e9a; }
+.gst-page .gst-number { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.gst-tax-form { border-color: #8fc9c9; box-shadow: 0 0 0 3px #e9f5f4; }
+.gst-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.gst-tax-form fieldset { min-width: 0; margin: 0 0 16px; padding: 0; border: 0; }
+.gst-page .gst-check { display: flex; flex-direction: row; align-items: flex-start; gap: 9px; margin: 18px 0; color: #566e7e; font-weight: 400; line-height: 1.7; }
+.gst-page .gst-check input { flex: 0 0 16px; width: 16px; height: 16px; min-height: 16px; padding: 0; margin: 2px 0 0; }
+.gst-file-label input { padding: 7px; height: auto; max-width: 300px; }
+@media (max-width: 950px) { .gst-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .gst-page { padding: 20px 14px; } .gst-panel { padding: 18px; } .gst-fields { grid-template-columns: minmax(0, 1fr); } }

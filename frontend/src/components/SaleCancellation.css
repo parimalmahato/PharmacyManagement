@@ -1,0 +1,17 @@
+.sale-cancellation { margin: 20px 0; padding: 18px; border: 1px solid #eddbd5; border-radius: 10px; background: #fffbf9; font-size: 13px; line-height: 1.7; }
+.sale-cancellation h3 { margin: 0 0 8px; color: #843b2b; }
+.sale-cancellation p { color: #66594f; }
+.sale-cancellation fieldset { display: grid; gap: 14px; padding: 0; border: 0; margin: 16px 0; min-width: 0; }
+.sale-cancellation label { display: flex; align-items: flex-start; gap: 9px; }
+.sale-cancellation input[type=checkbox] { box-sizing: border-box; appearance: auto; flex: 0 0 16px; width: 16px; height: 16px; min-width: 16px; min-height: 16px; margin: 3px 0 0; padding: 0; border: 0; border-radius: 0; align-self: flex-start; accent-color: #087f8c; cursor: pointer; }
+.sale-cancellation .cancellation-reason { flex-direction: column; font-weight: 600; }
+.sale-cancellation textarea { box-sizing: border-box; width: 100%; padding: 10px; border: 1px solid #d4c4be; border-radius: 6px; font: inherit; resize: vertical; }
+.sale-cancellation button { padding: 9px 14px; border: 1px solid #d7b9af; border-radius: 6px; background: #fff; color: #8c3d2e; font: inherit; font-weight: 600; cursor: pointer; }
+.sale-cancellation button[type=submit] { background: #9b4130; color: #fff; }
+.sale-cancellation button:disabled { opacity: .6; cursor: not-allowed; }
+.cancellation-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.sale-cancelled-banner { margin: 20px 0; padding: 16px 20px; border: 1px solid #d9a195; border-left: 4px solid #9b4130; border-radius: 6px; background: #fff6f3; color: #713a2e; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.sale-cancelled-banner > strong { font-size: 18px; }
+.sale-cancelled-banner p { margin: 6px 0 0; }
+.cancellation-error { color: #a12336 !important; }
+@media print { .sale-cancelled-banner { background: white; color: black; border-color: black; break-inside: avoid; } }

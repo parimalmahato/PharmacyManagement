@@ -1,0 +1,24 @@
+.help-page { max-width: 1000px; margin: 0 auto; color: #163247; }
+.help-page header { margin-bottom: 28px; }
+.help-page h1 { margin: 8px 0 12px; }
+.help-page h2 { font-size: 1.3rem; margin-top: 0; }
+.help-page p { line-height: 1.65; }
+.help-eyebrow { color: #087f8c; font-size: .75rem; letter-spacing: .12em; font-weight: 700; }
+.help-card { background: #fff; border: 1px solid #dce7ed; border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 6px 22px #16324706; }
+.help-note { color: #526778; font-size: .95rem; }
+.help-examples { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
+.help-examples button { background: #edf8f7; border: 1px solid #b6dfda; border-radius: 24px; color: #165b60; padding: 10px 14px; font-size: .87rem; text-align: left; }
+.help-page label { display: block; margin-bottom: 8px; font-weight: 600; }
+.help-page textarea { box-sizing: border-box; width: 100%; font: inherit; padding: 14px; border: 1px solid #becdd7; border-radius: 10px; resize: vertical; }
+.help-page :is(button, textarea):focus-visible { outline: 3px solid #29b8aa; outline-offset: 3px; }
+.help-submit { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; }
+.help-submit small { color: #526778; }
+.help-submit button { background: #087f8c; color: white; border: 0; border-radius: 8px; padding: 12px 20px; }
+.help-page button:disabled { opacity: .6; cursor: not-allowed; }
+.help-mode { display: inline-block; color: #38645b; background: #ecf7f0; border-radius: 6px; padding: 6px 10px; font-size: .8rem; margin-bottom: 18px; }
+.help-answer, .help-source-content { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; }
+.help-source { border-top: 1px solid #dce7ed; padding: 16px 0; }
+.help-source summary { cursor: pointer; font-weight: 600; color: #086b77; }
+.help-source-content { font-size: .94rem; margin-top: 14px; }
+.help-error { color: #a12d25; background: #fff0ee; padding: 16px; border-radius: 8px; }
+@media (max-width: 600px) { .help-card { padding: 18px; } .help-submit { align-items: flex-start; flex-direction: column; } .help-submit button { width: 100%; } }

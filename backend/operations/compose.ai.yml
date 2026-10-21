@@ -1,0 +1,11 @@
+# Local development only. Qdrant is bound to loopback and stores reviewed guide vectors.
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.15.5
+    ports:
+      - "127.0.0.1:6333:6333"
+    volumes:
+      - pharmacy_help_vectors:/qdrant/storage
+    restart: unless-stopped
+volumes:
+  pharmacy_help_vectors:
